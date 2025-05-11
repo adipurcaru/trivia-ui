@@ -7,7 +7,7 @@ import { Question } from '../models/question.model';
 export class QuizService {
     // private apiUrl = 'http://localhost:8080/quiz/questions';
 
-    private apiUrl = "https://trivia-service.vercel.app/questions";
+    private apiUrl = "https://trivia-service.onrender.com/questions";
 
     constructor(private http: HttpClient) {}
 
