@@ -9,6 +9,7 @@ export class QuizService {
 
     private apiUrl = "https://trivia-service.onrender.com/question";
 
+
     constructor(private http: HttpClient) {}
 
     getQuestions(): Observable<Question[]> {
