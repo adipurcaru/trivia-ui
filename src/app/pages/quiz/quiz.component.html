@@ -1,0 +1,35 @@
+<div class="quiz-wrapper" *ngIf="!loading && currentQuestion">
+    <h2 class="quiz-title">Intrebarea {{ currentIndex + 1 }} din {{ questions.length }}</h2>
+
+    <div class="question-box">
+        {{ currentQuestion.question }}
+    </div>
+
+    <div class="options-list">
+        <button
+                *ngFor="let option of currentQuestion.options"
+                [ngClass]="{
+        'selected': selectedAnswer === option,
+        'correct': selectedAnswer && option === correctAnswer,
+        'incorrect': selectedAnswer === option && option !== correctAnswer
+      }"
+                (click)="selectAnswer(option)"
+                [disabled]="!!selectedAnswer"
+        >
+            {{ option }}
+        </button>
+    </div>
+
+    <div class="answer-feedback" *ngIf="feedbackMessage">
+        {{ feedbackMessage }}
+    </div>
+
+    <div class="timer-bar">
+        <div class="fill" [style.width.%]="timerProgress"></div>
+    </div>
+</div>
+
+<div class="loading-screen" *ngIf="loading">
+    <div class="spinner"></div>
+    <p>Se incarca intrebarile...</p>
+</div>
