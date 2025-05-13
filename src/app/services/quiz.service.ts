@@ -5,14 +5,15 @@ import { Question } from '../models/question.model';
 
 @Injectable({ providedIn: 'root' })
 export class QuizService {
-    // private apiUrl = 'http://localhost:8080/quiz/questions';
+     private apiUrl = 'http://localhost:8080/quiz/questions';
 
-    private apiUrl = "https://trivia-service.onrender.com/quiz/questions";
+    //private apiUrl = "https://trivia-service.onrender.com/quiz/questions";
 
 
     constructor(private http: HttpClient) {}
 
-    getQuestions(): Observable<Question[]> {
-        return this.http.get<Question[]>(this.apiUrl);
+    getQuestions(type: string): Observable<Question[]> {
+        return this.http.get<Question[]>(`${this.apiUrl}?type=${type}`);
     }
+
 }

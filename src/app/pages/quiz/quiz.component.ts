@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { Question } from '../../models/question.model';
 import { QuizService } from '../../services/quiz.service';
 
@@ -22,20 +22,29 @@ export class QuizComponent implements OnInit {
   intervalId: any;
   loading = true;
 
-  constructor(private quizService: QuizService, private router: Router) {}
+  constructor(private quizService: QuizService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.quizService.getQuestions().subscribe({
-      next: (qs) => {
-        this.questions = qs;
-        this.loading = false;
-        this.loadQuestion();
-      },
-      error: (err) => {
-        console.error('Eroare la incarcare intrebari:', err);
-        this.loading = false;
-      }
+    const type = this.route.snapshot.url[1]?.path || 'cultura';
+
+    this.quizService.getQuestions(type).subscribe(qs => {
+      this.questions = qs;
+      this.loading = false;
+      this.loadQuestion();
+      // this.currentQuestion = this.questions[this.currentIndex];
     });
+
+    // this.quizService.getQuestions().subscribe({
+    //   next: (qs) => {
+    //     this.questions = qs;
+    //     this.loading = false;
+    //     this.loadQuestion();
+    //   },
+    //   error: (err) => {
+    //     console.error('Eroare la incarcare intrebari:', err);
+    //     this.loading = false;
+    //   }
+    // });
   }
 
   loadQuestion(): void {

@@ -6,10 +6,12 @@ import { ResultComponent } from './pages/result/result.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'quiz', component: QuizComponent },
+  { path: 'quiz/cultura', component: QuizComponent },
+  { path: 'quiz/capitale', component: QuizComponent },
   { path: 'rezultat', component: ResultComponent },
   { path: '**', redirectTo: '' }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
