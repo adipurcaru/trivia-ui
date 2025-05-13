@@ -31,20 +31,7 @@ export class QuizComponent implements OnInit {
       this.questions = qs;
       this.loading = false;
       this.loadQuestion();
-      // this.currentQuestion = this.questions[this.currentIndex];
     });
-
-    // this.quizService.getQuestions().subscribe({
-    //   next: (qs) => {
-    //     this.questions = qs;
-    //     this.loading = false;
-    //     this.loadQuestion();
-    //   },
-    //   error: (err) => {
-    //     console.error('Eroare la incarcare intrebari:', err);
-    //     this.loading = false;
-    //   }
-    // });
   }
 
   loadQuestion(): void {
