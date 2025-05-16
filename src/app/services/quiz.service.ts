@@ -13,7 +13,7 @@ export class QuizService {
     constructor(private http: HttpClient) {}
 
     getQuestions(type: string): Observable<Question[]> {
-        return this.http.get<Question[]>(`${this.apiUrl}?type=${type}`);
+        return this.http.get<Question[]>(`${this.apiUrl}?type=${type}&count=10`);
     }
 
 }
