@@ -25,7 +25,7 @@ export class QuizComponent implements OnInit {
   constructor(private quizService: QuizService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    const type = this.route.snapshot.url[1]?.path || 'cultura';
+    const type = this.route.snapshot.url[1]?.path || 'cultura_generala';
 
     this.quizService.getQuestions(type).subscribe(qs => {
       this.questions = qs;
